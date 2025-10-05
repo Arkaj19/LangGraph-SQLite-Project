@@ -1,47 +1,76 @@
-🍨 Agentic SQL Assistant on Indian Desserts Data
-🚀 Intelligent LangGraph Workflow with Iterative SQL Validation
-Done by: Person A & Person B
-🧠 Project Overview
-This project demonstrates an agentic application built using LangGraph and Google Gemini (via langchain-google-genai), which allows natural language queries to be converted into SQL queries and executed against a SQLite database.
-The key highlight is its iterative validation loop — the system automatically detects and corrects invalid or hallucinated SQL queries using feedback from a validator node before execution.
-⚙️ Key Features
-🧩 Agentic Workflow: Uses LangGraph to orchestrate nodes for SQL generation, validation, and execution.
-🔁 Iterative Feedback Loop: Automatically regenerates SQL if validation fails (column mismatch or syntax error).
-🤖 Google Gemini Integration: Generates SQL queries from user intent.
-🗃️ SQLite Integration: Executes validated SQL queries on a local database (desserts.db).
-🧾 Metadata Awareness: Uses column-level metadata for schema validation.
-🧠 LLM Guardrails: Reduces hallucinations by enforcing schema-based constraints.
-🏗️ Architecture Overview
-Workflow Nodes
-Node	Description
-🧠 generate_sql	Uses Gemini to generate (or regenerate) SQL from natural language input and feedback.
-🧩 validate_sql	Checks for column validity, schema correctness, and syntax.
-⚙️ execute_sql	Runs the validated query on the SQLite database.
-🏁 END	Outputs final query results.
-Flowchart
-User Query  
-   ↓
+# 🍨 Agentic SQL Assistant on Indian Desserts Data  
+
+### 🚀 Intelligent LangGraph Workflow with Iterative SQL Validation  
+**Done by: Person A & Person B**
+
+---
+
+## 🧠 Project Overview  
+
+This project demonstrates an **agentic application** built using **LangGraph** and **Google Gemini (via `langchain-google-genai`)**, which allows natural language queries to be converted into SQL queries and executed against a **SQLite database**.  
+
+The key highlight is its **iterative validation loop** — the system automatically detects and corrects invalid or hallucinated SQL queries using feedback from a validator node before execution.  
+
+---
+
+## ⚙️ Key Features  
+
+- 🧩 **Agentic Workflow:** Uses LangGraph to orchestrate nodes for SQL generation, validation, and execution.  
+- 🔁 **Iterative Feedback Loop:** Automatically regenerates SQL if validation fails (column mismatch or syntax error).  
+- 🤖 **Google Gemini Integration:** Generates SQL queries from user intent.  
+- 🗃️ **SQLite Integration:** Executes validated SQL queries on a local database (`desserts.db`).  
+- 🧾 **Metadata Awareness:** Uses column-level metadata for schema validation.  
+- 🧠 **LLM Guardrails:** Reduces hallucinations by enforcing schema-based constraints.  
+
+---
+
+## 🏗️ Architecture Overview  
+
+### **Workflow Nodes**
+
+| Node | Description |
+|------|--------------|
+| 🧠 **generate_sql** | Uses Gemini to generate (or regenerate) SQL from natural language input and feedback. |
+| 🧩 **validate_sql** | Checks for column validity, schema correctness, and syntax. |
+| ⚙️ **execute_sql** | Runs the validated query on the SQLite database. |
+| 🏁 **END** | Outputs the final query results. |
+
+---
+
+### **Flowchart**
+
+User Query
+↓
 generate_sql (Gemini)
-   ↓
+↓
 validate_sql (Schema & Syntax Checker)
-   ↓
- ┌───────────────┐
- │ SQL Valid ?   │
- └──────┬────────┘
-        │
-  Yes   ↓   No
- execute_sql ←───── regenerate_sql
-        ↓
-       END
-🗂️ Project Structure
+↓
+┌───────────────┐
+│ SQL Valid ? │
+└──────┬────────┘
+│
+Yes ↓ No
+execute_sql ←───── regenerate_sql
+↓
+END
+
+---
+
+## 🗂️ Project Structure  
+
 📂 agentic-sql-assistant/
 │
-├── desserts.db                     # SQLite database
-├── indian_desserts_metadata.json   # Metadata file (schema info)
-├── agentic_sql_agent.py            # Main workflow code
-├── requirements.txt                # Dependencies
-└── README.md                       # This file
-🧩 Metadata File Example (indian_desserts_metadata.json)
+├── desserts.db # SQLite database
+├── indian_desserts_metadata.json # Metadata file (schema info)
+├── agentic_sql_agent.py # Main workflow code
+├── requirements.txt # Dependencies
+└── README.md # Documentation
+
+---
+
+## 🧩 Metadata File Example (`indian_desserts_metadata.json`)
+
+```json
 {
   "table_name": "indian_desserts",
   "columns": {
@@ -62,7 +91,7 @@ LLM	Google Gemini (langchain-google-genai)
 Workflow Engine	LangGraph
 Database	SQLite
 Language	Python 3.10+
-Data	Indian Desserts Dataset (CSV → SQLite)
+Data Source	Indian Desserts Dataset (CSV → SQLite)
 ⚙️ Installation
 1️⃣ Clone the Repository
 git clone https://github.com/<your-username>/agentic-sql-assistant.git
@@ -113,6 +142,7 @@ Developed By:
 👨‍💻 Person B
 Under the guidance of the Data Intelligence Team.
 Built as part of an internal demonstration of agentic reasoning and workflow orchestration.
+
 🧠 References
 LangGraph Documentation
 Google Gemini API via LangChain
