@@ -1,0 +1,56 @@
+{
+  "indian_desserts": {
+    "columns": {
+      "name": {
+        "type": "TEXT",
+        "description": "Name of the Indian dessert dish.",
+        "examples": ["Balu shahi", "Boondi", "Gajar ka halwa", "Gulab jamun"]
+      },
+      "ingredients": {
+        "type": "TEXT",
+        "description": "Comma-separated list of ingredients used in the dessert.",
+        "examples": [
+          "Maida flour, yogurt, oil, sugar",
+          "Carrots, milk, sugar, ghee, cashews, raisins",
+          "Flour, ghee, milk, sugar, saffron, almonds"
+        ]
+      },
+      "diet": {
+        "type": "TEXT",
+        "description": "Indicates whether the dish is vegetarian or non-vegetarian.",
+        "examples": ["vegetarian"]
+      },
+      "prep_time": {
+        "type": "INTEGER",
+        "description": "Preparation time in minutes.",
+        "examples": [10, 15, 45, 80]
+      },
+      "cook_time": {
+        "type": "INTEGER",
+        "description": "Cooking time in minutes.",
+        "examples": [25, 30, 40, 50, 60]
+      },
+      "flavor_profile": {
+        "type": "TEXT",
+        "description": "The general flavor taste of the dessert.",
+        "examples": ["sweet"]
+      },
+      "course": {
+        "type": "TEXT",
+        "description": "The course during which the dessert is typically served.",
+        "examples": ["dessert"]
+      },
+      "state": {
+        "type": "TEXT",
+        "description": "The Indian state where the dessert is popular or originates from.",
+        "examples": ["West Bengal", "Rajasthan", "Punjab", "Uttar Pradesh"]
+      },
+      "region": {
+        "type": "TEXT",
+        "description": "The geographical region of India the dessert is associated with.",
+        "examples": ["East", "West", "North"]
+      }
+    },
+    "table_description": "Contains information about traditional Indian desserts, their ingredients, preparation and cooking times, flavor profiles, and the regions they are associated with."
+  }
+}
