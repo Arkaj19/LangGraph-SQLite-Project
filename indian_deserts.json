@@ -1,5 +1,6 @@
 {
   "indian_desserts": {
+    "table_name": "indian_desserts",
     "columns": {
       "name": {
         "type": "TEXT",

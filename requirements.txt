@@ -1,0 +1,15 @@
+# LangGraph & LangChain Core
+langgraph>=0.0.48
+langchain>=0.3.0
+langchain-google-genai>=0.1.0
+
+# Database & Data Handling
+pandas>=2.2.0
+sqlalchemy>=2.0.30
+
+# Config & Validation
+python-dotenv>=1.0.1
+jsonschema>=4.22.0
+
+# For local testing (SQLite built-in)
+# sqlite3 (comes with Python)
