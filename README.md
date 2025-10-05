@@ -68,6 +68,9 @@ END
 
 ---
 
+
+---
+
 ## 🧩 Metadata File Example (`indian_desserts_metadata.json`)
 
 ```json
@@ -85,20 +88,36 @@ END
     "region": {"type": "TEXT", "example": "East"}
   }
 }
-🧱 Tech Stack
-Component	Library / Tool
-LLM	Google Gemini (langchain-google-genai)
-Workflow Engine	LangGraph
-Database	SQLite
-Language	Python 3.10+
-Data Source	Indian Desserts Dataset (CSV → SQLite)
-⚙️ Installation
-1️⃣ Clone the Repository
+```
+
+## 🧱 Tech Stack  
+
+| Component | Library / Tool |
+|------------|----------------|
+| **LLM** | Google Gemini (`langchain-google-genai`) |
+| **Workflow Engine** | LangGraph |
+| **Database** | SQLite |
+| **Language** | Python 3.10+ |
+| **Data Source** | Indian Desserts Dataset (CSV → SQLite) |
+
+---
+
+## ⚙️ Installation  
+
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/<your-username>/agentic-sql-assistant.git
 cd agentic-sql-assistant
+```
+
 2️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
+
 3️⃣ Create the SQLite Database (if not present)
+
+```
 import pandas as pd
 import sqlite3
 
@@ -106,44 +125,43 @@ df = pd.read_csv("indian_desserts.csv")
 conn = sqlite3.connect("desserts.db")
 df.to_sql("indian_desserts", conn, if_exists="replace", index=False)
 conn.close()
+```
+
 🚀 Running the Agent
 Run the main workflow:
+```
 python agentic_sql_agent.py
+```
+
 Then, type your query:
+```
 Enter your question: Show all desserts from the North region.
+```
+
 Output Example:
+
+
 🧠 Generated SQL: SELECT name FROM indian_desserts WHERE region='North';
 ✅ SQL Validated Successfully.
 📊 Query Result: [('Gajar ka halwa',), ('Jalebi',), ('Phirni',)]
 🎯 Final Result:
 [('Gajar ka halwa',), ('Jalebi',), ('Phirni',)]
-If SQL is invalid, the validator node automatically feeds back corrections and Gemini regenerates a new SQL query.
-🧩 Example Iterative Correction
-❌ First Attempt
-SELECT name FROM indian_desserts WHERE area='North';
-→ Error: Column area doesn’t exist.
-🔁 Feedback to Gemini
-“Invalid column: area. Use column ‘region’ instead.”
-✅ Regenerated Query
-SELECT name FROM indian_desserts WHERE region='North';
-🧠 Why This Project Is Important
-Demonstrates Agentic Reasoning Loops — LLMs improving their own output.
-Mimics real enterprise use-cases where schema validation is crucial (data pipelines, analytics assistants, etc.).
-Uses LangGraph effectively to control iterative LLM workflows.
-Fully database-independent architecture — can swap desserts.db for any other SQLite schema + metadata.
-👩‍💻 Future Improvements
-Add support for multi-table joins.
-Introduce confidence scoring for LLM outputs.
-Integrate with FastAPI for REST-based query endpoints.
-Add LangSmith or Weights & Biases logging for observability.
-🧾 Credits
-Developed By:
-👩‍💻 Person A
-👨‍💻 Person B
-Under the guidance of the Data Intelligence Team.
-Built as part of an internal demonstration of agentic reasoning and workflow orchestration.
 
-🧠 References
-LangGraph Documentation
-Google Gemini API via LangChain
-SQLite Documentation
+If SQL is invalid, the validator node automatically feeds back corrections and Gemini regenerates a new SQL query.
+
+
+🔁 Example Iterative Correction
+❌ First Attempt
+```
+SELECT name FROM indian_desserts WHERE area='North';
+```
+
+Error: Column area doesn’t exist.
+🔁 Feedback to Gemini
+
+Invalid column: area. Use column region instead.
+
+✅ Regenerated Query
+```
+SELECT name FROM indian_desserts WHERE region='North';
+```
